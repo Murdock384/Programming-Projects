@@ -1,0 +1,25 @@
+﻿<Window x:Class="WpfLab3.Slideshow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:WpfLab3"
+        mc:Ignorable="d"
+        Title="Slideshow" Height="768" Width="1024"
+        WindowStyle="None" ResizeMode="NoResize" ShowInTaskbar="False"
+        WindowStartupLocation="CenterOwner" Topmost="True" >
+    <Window.Resources>
+    </Window.Resources>
+    <Grid>
+        <Image x:Name="slideshowImage" Stretch="Fill" />
+        <Canvas x:Name="canvas" Background="Transparent" Width="1280" Height="1024">
+
+        </Canvas>
+        <Grid.ContextMenu>
+            <ContextMenu>
+                <MenuItem Header="Play/Pause" Click="PlayPause_Click"/>
+                <MenuItem Header="Stop" Click="Stop_Click"/>
+            </ContextMenu>
+        </Grid.ContextMenu>
+    </Grid>
+</Window>
