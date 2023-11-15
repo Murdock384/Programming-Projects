@@ -1,0 +1,84 @@
+﻿<Window x:Class="Wpf_binding.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Wpf_binding"
+        mc:Ignorable="d"
+       Title="MainWindow" Height="900" Width="650">
+    <Window.Resources>
+        <BitmapImage x:Key="Dypsis" UriSource="/Resources/image.png"/>
+        <BitmapImage x:Key="Fejan" UriSource="/Resources/image.png"/>
+        <BitmapImage x:Key="Handskalad" UriSource="/Resources/image.png"/>
+        <BitmapImage x:Key="Knorrig" UriSource="/Resources/image.png"/>
+        <BitmapImage x:Key="Nicekbo" UriSource="/Resources/image.png"/>
+        <BitmapImage x:Key="Sjalsligt" UriSource="/Resources/image.png"/>
+    
+    </Window.Resources>
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="200"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+        <Grid Grid.Column="0">
+            <ListBox x:Name="furnitureList"
+                 ItemsSource="{Binding}">
+                <ListBox.ItemTemplate>
+                    <DataTemplate>
+                        <TextBlock Text="{Binding Name}" Margin="5"/>
+                    </DataTemplate>
+                </ListBox.ItemTemplate>
+            </ListBox>
+            
+
+        </Grid>
+        <Grid Grid.Column="1">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="auto"/>
+                <RowDefinition Height="auto"/>
+                <RowDefinition Height="auto"/>
+                <RowDefinition Height="auto"/>
+                <RowDefinition Height="auto"/>
+            </Grid.RowDefinitions>
+            <TextBlock Grid.Column="1" Text="{Binding SelectedItem.Name, ElementName=furnitureList}" HorizontalAlignment="Right" FontSize="20" FontWeight="Bold" TextAlignment="Center"/>
+            <Image Stretch="Fill">
+                <Image.Style>
+                    <Style TargetType="{x:Type Image}">
+                        <Style.Triggers>
+                            <DataTrigger Binding="{Binding Name}" Value="FEJAN">
+                                <Setter Property="Source" Value="{StaticResource Fejan}"/>
+                            </DataTrigger>
+                            <DataTrigger Binding="{Binding Name}" Value="DYPSIS_LUTESCENS">
+                                <Setter Property="Source" Value="{StaticResource Dypsis}"/>
+                            </DataTrigger>
+                            <DataTrigger Binding="{Binding Name}" Value="HANDSKALAD">
+                                <Setter Property="Source" Value="{StaticResource Handskalad}"/>
+                            </DataTrigger>
+                            <DataTrigger Binding="{Binding Name}" Value="KNORRIG">
+                                <Setter Property="Source" Value="{StaticResource Knorrig}"/>
+                            </DataTrigger>
+                            <DataTrigger Binding="{Binding Name}" Value="NICKEBO">
+                                <Setter Property="Source" Value="{StaticResource Nicekbo}"/>
+                            </DataTrigger>
+                            <DataTrigger Binding="{Binding Name}" Value="SJALSLIGT">
+                                <Setter Property="Source" Value="{StaticResource Sjalsligt}"/>
+                            </DataTrigger>
+                        </Style.Triggers>
+                    </Style>
+                </Image.Style>
+                
+            </Image>
+            <GroupBox Grid.Column="1" Grid.Row="0" Header="General Information">
+                <TextBlock>Products Code:</TextBlock>
+
+
+               
+            </GroupBox>
+            <GroupBox Grid.Column="1" Grid.Row="1" Header="Dimensions">
+                <TextBlock Text="Users Code"/>
+
+            </GroupBox>
+        </Grid>
+        
+    </Grid>
+</Window>
